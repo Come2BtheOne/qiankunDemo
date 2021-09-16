@@ -78,7 +78,6 @@ export default {
 </script>
 
 <style lang="less">
-@import url("../assets/styles/reset.less");
 .home-page {
     height: 100vh;
     width: 100vw;
