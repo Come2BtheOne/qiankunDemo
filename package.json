@@ -1,0 +1,30 @@
+{
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "examples:install": "npm-run-all --serial install:*",
+    "examples:start": "npm-run-all --parallel start:*",
+    "install:main": "cd main-vue && yarn",
+    "start:main": "cd main-vue && yarn serve",
+    "install:react": "cd micro-react && yarn",
+    "start:react": "cd micro-react && yarn start",
+    "install:vue": "cd micro-vue && yarn",
+    "start:vue": "cd micro-vue && yarn serve",
+    "install:vue3": "cd micro-vue3 && yarn",
+    "start:vue3": "cd micro-vue3 && yarn dev",
+    "install:purehtml": "cd micro-purehtml && yarn",
+    "start:purehtml": "cd micro-purehtml && yarn start",
+    "install:umi": "cd micro-umi && yarn",
+    "start:umi": "cd micro-umi && yarn start"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
