@@ -10,5 +10,7 @@ export const config = {
 
 export const startOption = {
     sandbox: {
+        strictStyleIsolation: true,
+        // experimentalStyleIsolation: true
     }
 }

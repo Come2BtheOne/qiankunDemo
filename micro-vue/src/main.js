@@ -17,12 +17,12 @@ if (!window.__POWERED_BY_QIANKUN__) {
   render()
 }
 
-function render() {
+function render(props) {
   // 挂载应用
   instance = new Vue({
     router,
     render: (h) => h(App),
-  }).$mount("#micro-vue");
+  }).$mount(props ? props.container.querySelector('#app') : "#app");
 }
 
 /**

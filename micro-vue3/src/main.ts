@@ -12,7 +12,7 @@ import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helpe
  let instance: any = null
 // 独立运行时，直接挂载应用
 if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
-    render({})
+    render()
 }
 
 renderWithQiankun({
@@ -36,5 +36,5 @@ function render(props?: any) {
     instance.config.globalProperties.$auth = 'ZR'
     instance.use(router)
     instance.use(store, key)
-    instance.mount("#app")
+    instance.mount(props ? props.container.querySelector("#app") : document.getElementById("app"))
 }

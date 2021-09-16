@@ -1,5 +1,5 @@
 export default () => {
     return (
-        <div>React子应用</div>
+        <a>React子应用</a>
     )
 }

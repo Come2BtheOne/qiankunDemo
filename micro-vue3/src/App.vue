@@ -1,5 +1,5 @@
 <template>
-  <div id="MicroVue3">
+  <div class="MicroVue3">
     <NConfigProvider :theme="darkTheme">
       <Header />
       <Container />
