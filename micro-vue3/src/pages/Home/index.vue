@@ -8,7 +8,7 @@
         次数{{tbCount}}<NButton type="error" size="tiny">+</NButton>
   </NSpace>
     <div>
-        <img :src="Logo" alt="" />
+        <img :src="Logo" alt="" style="height: 100px; width: 100px" />
     </div>
 </template>
 
