@@ -14,7 +14,7 @@ export default defineConfig({
   },
   server: {
     port: 9300,
-    open: true,
+    // open: true,
     cors: true
   },
   plugins: [
