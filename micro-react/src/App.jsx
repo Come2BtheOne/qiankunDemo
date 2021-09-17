@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import './App.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import Home from '@/pages/Home.jsx'
 
 function App() {

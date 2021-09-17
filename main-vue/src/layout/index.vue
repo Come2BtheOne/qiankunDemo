@@ -39,22 +39,34 @@
                 <i v-if="isCollapse" class="el-icon-d-arrow-right"></i>
                 <i v-else class="el-icon-d-arrow-left"></i>
             </div>
+            <div class="more-operation" @click="drawer = true">{{isCollapse ? "more" : "更多操作..."}}</div>
         </div>
         <div class="right-wrap">
-            <router-view id="MainAppArea" v-if="$route.name === 'Main'" />
+            <router-view id="MainAppArea" v-show="$route.name === 'Main'" />
 
-            <div else id="MicroAppArea"></div>
+            <div v-show="$route.name !== 'Main'" id="MicroAppArea"></div>
         </div>
+        <el-drawer
+            title="操作"
+            :visible.sync="drawer"
+            direction="rtl"
+            :modal="false"
+        >
+            <el-button @click="onClick('VueMicroDisable')">vue子项目弹窗</el-button>
+            <el-button @click="onClick('ReactMicroDisable')">React子项目弹窗</el-button>
+        </el-drawer>
     </div>
 </template>
 
 <script>
 import start from '@/micro'
 import { startOption } from "@/micro/config.js";
+import { setStateFn } from '@/micro/globalState.js'
 export default {
     data() {
         return {
-            isCollapse: false
+            isCollapse: false,
+            drawer: false
         }
     },
     computed: {
@@ -72,6 +84,11 @@ export default {
     methods: {
         handleSelect(index) {
             this.$router.push("/" + index)
+        },
+        onClick(value) {
+            setStateFn({
+                [value]: true
+            })
         }
     }
 }
@@ -86,6 +103,7 @@ export default {
     .left-wrap {
         height: 100%;
         // width: 180px;
+        background-color: #545c64;
         position: relative;
         .collapse-btn {
             position: absolute;
@@ -95,6 +113,13 @@ export default {
             color: #ffd04b;
             font-size: 24px;
         }
+        .more-operation {
+            height: 30px;
+            width: 100%;
+            color: #ffd04b;
+            text-align: center;
+            cursor: pointer;
+        }
     }
     .right-wrap {
         height: 100%;
@@ -102,7 +127,7 @@ export default {
     }
     .el-menu {
         border-right: 0;
-        height: 100%;
+        height: calc(100% - 30px);
     }
 }
 

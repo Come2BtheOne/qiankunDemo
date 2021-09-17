@@ -1,4 +1,5 @@
 import { registerMicroApps, addGlobalUncaughtErrorHandler, start } from "qiankun";
+import { initStateFn } from './globalState'
 
 // 子应用注册信息
 import apps from "./apps";
@@ -22,6 +23,8 @@ registerMicroApps(apps, {
     return Promise.resolve();
   },
 });
+
+initStateFn();
 
 /**
  * 添加全局的未捕获异常处理器

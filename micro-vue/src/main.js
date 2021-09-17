@@ -2,9 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import "./public-path";
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import { getGlobalStateFn } from './micro/globalState'
 
 Vue.config.productionTip = false
-
+Vue.use(ElementUI)
 let instance = null;
 
 /**
@@ -21,6 +24,7 @@ function render(props) {
   // 挂载应用
   instance = new Vue({
     router,
+    ElementUI,
     render: (h) => h(App),
   }).$mount(props ? props.container.querySelector('#app') : "#app");
 }
@@ -30,8 +34,8 @@ function render(props) {
  * 通常我们可以在这里做一些全局变量的初始化，比如不会在 unmount 阶段被销毁的应用级别的缓存等。
  */
 
-export async function bootstrap() {
-  console.log("Vue子应用:bootstraped");
+export async function bootstrap(props) {
+  console.log("Vue子应用:bootstraped", props);
 }
 
 /**
@@ -39,6 +43,7 @@ export async function bootstrap() {
  */
 export async function mount(props) {
   console.log("Vue子应用:mount", props);
+  getGlobalStateFn(props);
   render(props);
 }
 

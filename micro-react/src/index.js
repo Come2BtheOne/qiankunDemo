@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
+import { getGlobalStateFn } from './micro/globalState'
 
 // 独立运行时，直接挂载应用
 if (!window.__POWERED_BY_QIANKUN__) {
@@ -14,7 +15,7 @@ if (!window.__POWERED_BY_QIANKUN__) {
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
 function render(props) {
-  ReactDOM.render(<App />, props.container ? props.container.querySelector('#root') : document.getElementById("root"));
+  ReactDOM.render(<App />, props ? props.container.querySelector('#root') : document.getElementById("root"));
 }
 
 /**
@@ -30,6 +31,7 @@ function render(props) {
  */
  export async function mount(props) {
   console.log("React子应用:mount", props);
+  getGlobalStateFn(props);
   render(props);
 }
 
