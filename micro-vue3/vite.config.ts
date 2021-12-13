@@ -15,7 +15,8 @@ export default defineConfig({
   server: {
     port: 9300,
     // open: true,
-    cors: true
+    cors: true,
+    origin: 'http://localhost:9300'
   },
   plugins: [
     vue(),
